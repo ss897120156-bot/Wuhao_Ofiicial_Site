@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 
 const businesses = [
@@ -65,11 +64,10 @@ export default function BusinessCards() {
               className="group relative aspect-[3/4] overflow-hidden bg-[#1a1c1c]"
             >
               {/* Image */}
-              <Image
+              <img
                 src={business.image}
                 alt={business.title}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />

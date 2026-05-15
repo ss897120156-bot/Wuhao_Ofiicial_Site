@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 
 export default function BrandStory() {
@@ -52,11 +51,10 @@ export default function BrandStory() {
 
           {/* Right: Image */}
           <div className="relative aspect-[4/3] lg:aspect-auto lg:h-[600px]">
-            <Image
+            <img
               src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80"
               alt="Wuhao Factory"
-              fill
-              className="object-cover"
+              className="absolute inset-0 w-full h-full object-cover"
             />
           </div>
         </div>

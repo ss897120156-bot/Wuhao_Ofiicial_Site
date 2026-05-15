@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 
 const quickLinks = [
   { label: "Product Catalog", href: "/products" },
@@ -125,11 +124,10 @@ export default function Footer() {
 
       {/* Factory Image Strip */}
       <div className="relative w-full h-[200px] lg:h-[300px]">
-        <Image
+        <img
           src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=80"
           alt="Wuhao Factory"
-          fill
-          className="object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/50" />
       </div>
