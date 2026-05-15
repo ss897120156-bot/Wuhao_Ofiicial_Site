@@ -1,11 +1,3 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
-
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
-
----
-
 # 项目上下文记忆
 
 ## 项目基本信息
@@ -33,7 +25,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - 品牌故事: `src/components/BrandStory.tsx`
 - 业务卡片: `src/components/BusinessCards.tsx`
 - 更新日志: `CHANGELOG.md`
-- 项目记忆: `.trae/documents/project-context.md`
+- 项目规则: `AGENTS.md`（Next.js 特殊版本警告）
 
 ## 设计系统
 - **配色**: 黑(#000000) / 白(#FFFFFF) / 蓝(#1C69D3)

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Hanken_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
+import PageAnimatePresence from "@/components/PageAnimatePresence";
 
 const hankenGrotesk = Hanken_Grotesk({
   variable: "--font-hanken-grotesk",
@@ -29,8 +30,10 @@ export default function RootLayout({
       lang="en"
       className={`${hankenGrotesk.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#f9f9f9] text-[#1a1c1c]">
-        {children}
+      <body className="min-h-full bg-[#f9f9f9] text-[#1a1c1c] overflow-x-hidden">
+        <PageAnimatePresence>
+          {children}
+        </PageAnimatePresence>
       </body>
     </html>
   );

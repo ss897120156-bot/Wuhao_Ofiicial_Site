@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { label: "HOME", href: "/" },
@@ -23,6 +24,7 @@ export default function Navbar() {
   const [langOpen, setLangOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState(languages[0]);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#e6e6e6]">
@@ -37,15 +39,24 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-xs font-semibold tracking-[0.1em] text-[#1a1c1c] hover:text-[#1c69d3] transition-colors duration-200"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="relative text-xs font-semibold tracking-[0.1em] text-[#1a1c1c] hover:text-[#1c69d3] transition-colors duration-200 py-1 group"
+                >
+                  {link.label}
+                  {/* Animated Underline */}
+                  <span
+                    className={`absolute bottom-0 left-0 h-[2px] bg-black transition-all duration-300 ease-out ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  />
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Right side: Language + Search */}
@@ -118,18 +129,27 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden bg-white border-t border-[#e6e6e6]">
+        <div className="lg:hidden bg-white border-t border-[#e6e6e6] animate-in slide-in-from-top-2 duration-300">
           <nav className="flex flex-col px-6 py-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="py-3 text-xs font-semibold tracking-[0.1em] text-[#1a1c1c] hover:text-[#1c69d3] transition-colors duration-200 border-b border-[#eeeeee] last:border-0"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="relative py-3 text-xs font-semibold tracking-[0.1em] text-[#1a1c1c] hover:text-[#1c69d3] transition-colors duration-200 border-b border-[#eeeeee] last:border-0 overflow-hidden group"
+                >
+                  <span className="relative z-10">{link.label}</span>
+                  {/* Animated Left Border */}
+                  <span
+                    className={`absolute left-0 top-0 bottom-0 w-[4px] bg-black transition-all duration-300 ease-out ${
+                      isActive ? "translate-x-0" : "-translate-x-full group-hover:translate-x-0"
+                    }`}
+                  />
+                </Link>
+              );
+            })}
           </nav>
         </div>
       )}

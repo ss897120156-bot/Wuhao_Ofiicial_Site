@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary": "#5d5f5f",
+            "secondary-container": "#dfe0e0",
+            "on-primary-container": "#848484",
+            "secondary-fixed": "#e2e2e2",
+            "on-tertiary-fixed-variant": "#004493",
+            "surface-variant": "#e2e2e2",
+            "surface-container": "#eeeeee",
+            "error": "#ba1a1a",
+            "on-surface": "#1a1c1c",
+            "on-secondary": "#ffffff",
+            "on-error-container": "#93000a",
+            "tertiary-fixed": "#d8e2ff",
+            "on-primary-fixed-variant": "#474747",
+            "background": "#f9f9f9",
+            "inverse-primary": "#c6c6c6",
+            "primary-container": "#1b1b1b",
+            "on-tertiary-fixed": "#001a41",
+            "on-tertiary": "#ffffff",
+            "tertiary": "#000000",
+            "outline": "#7e7576",
+            "inverse-on-surface": "#f1f1f1",
+            "outline-variant": "#cfc4c5",
+            "surface-container-lowest": "#ffffff",
+            "surface-bright": "#f9f9f9",
+            "on-secondary-container": "#616363",
+            "surface-container-high": "#e8e8e8",
+            "surface-container-low": "#f4f3f3",
+            "surface-dim": "#dadada",
+            "on-background": "#1a1c1c",
+            "tertiary-fixed-dim": "#adc6ff",
+            "on-primary": "#ffffff",
+            "tertiary-container": "#001a41",
+            "secondary-fixed-dim": "#c6c6c7",
+            "on-secondary-fixed": "#1a1c1c",
+            "surface": "#f9f9f9",
+            "primary-fixed-dim": "#c6c6c6",
+            "on-surface-variant": "#4c4546",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "primary": "#000000",
+            "on-tertiary-container": "#4081ed",
+            "on-secondary-fixed-variant": "#454747",
+            "inverse-surface": "#2f3131",
+            "primary-fixed": "#e2e2e2",
+            "surface-tint": "#5e5e5e",
+            "on-primary-fixed": "#1b1b1b",
+            "surface": "#f9f9f9",
+            "primary-fixed-dim": "#c6c6c6",
+            "on-surface-variant": "#4c4546",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "primary": "#000000",
+            "on-tertiary-container": "#4081ed",
+            "on-secondary-fixed-variant": "#454747",
+            "inverse-surface": "#2f3131",
+            "primary-fixed": "#e2e2e2",
+            "surface-tint": "#5e5e5e",
+            "on-primary-fixed": "#1b1b1b",
+            "surface-container-highest": "#e2e2e2"
+          },
+          "borderRadius": {
+            "DEFAULT": "0px",
+            "lg": "0px",
+            "xl": "0px",
+            "full": "9999px"
+          },
+          "spacing": {
+            "container-max": "1440px",
+            "margin-mobile": "20px",
+            "margin-tablet": "32px",
+            "margin-desktop": "64px",
+            "section-gap": "120px",
+            "gutter": "24px"
+          },
+          "fontFamily": {
+            "display-xl": ["Hanken Grotesk"],
+            "body-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-md": ["Hanken Grotesk"],
+            "headline-lg-mobile": ["Hanken Grotesk"],
+            "headline-lg": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "display-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+            "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+            "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+            "headline-md": ["24px", {"lineHeight": "1.4", "letterSpacing": "0.03em", "fontWeight": "600"}],
+            "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "700"}],
+            "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body { background-color: #f9f9f9; }
+  </style>
+</head>
+<body class="font-body-md text-on-background">
+<!-- Header Anchor -->
+<header class="fixed top-0 w-full z-50 bg-surface/95 backdrop-blur-md border-b border-primary">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="text-headline-md font-headline-md font-bold tracking-tighter text-primary">Wuhao Industry &amp; Trade</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-label-sm font-label-sm uppercase tracking-widest text-secondary hover:text-primary transition-colors duration-200" href="#">Home</a>
+<a class="text-label-sm font-label-sm uppercase tracking-widest text-primary border-b-2 border-primary pb-1" href="#">Products</a>
+<a class="text-label-sm font-label-sm uppercase tracking-widest text-secondary hover:text-primary transition-colors duration-200" href="#">News</a>
+<a class="text-label-sm font-label-sm uppercase tracking-widest text-secondary hover:text-primary transition-colors duration-200" href="#">About Us</a>
+<a class="text-label-sm font-label-sm uppercase tracking-widest text-secondary hover:text-primary transition-colors duration-200" href="#">Certifications</a>
+<a class="text-label-sm font-label-sm uppercase tracking-widest text-secondary hover:text-primary transition-colors duration-200" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-primary">search</button>
+<button class="bg-primary text-on-primary px-6 py-2 text-label-sm font-label-sm uppercase tracking-widest hover:bg-on-tertiary-fixed-variant transition-all">Request Quote</button>
+</div>
+</div>
+</header>
+<main class="pt-[120px] pb-section-gap max-w-container-max mx-auto px-margin-desktop">
+<!-- Title Section -->
+<div class="mb-12">
+<h1 class="text-headline-lg font-headline-lg text-primary uppercase">All Products</h1>
+<div class="h-1 w-24 bg-on-tertiary-fixed-variant mt-4"></div>
+</div>
+<div class="flex flex-col md:flex-row gap-gutter">
+<!-- Left Sidebar Navigation -->
+<aside class="w-full md:w-80 flex-shrink-0">
+<div class="bg-white border border-surface-variant p-2">
+<div class="p-4 border-b border-surface-variant mb-2">
+<span class="text-label-sm font-label-sm uppercase tracking-widest text-on-primary-container">Categories</span>
+</div>
+<ul class="space-y-1">
+<li>
+<a class="group flex items-center justify-between p-4 hover:bg-primary hover:text-on-primary transition-all duration-200" href="#">
+<span class="text-label-sm font-label-sm uppercase tracking-tight">Industrial Wire Container</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</a>
+</li>
+<li>
+<a class="group flex items-center justify-between p-4 bg-surface-container-low text-primary border-l-4 border-primary" href="#">
+<span class="text-label-sm font-label-sm uppercase tracking-tight">Collapsible Wire Container</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</a>
+</li>
+<li>
+<a class="group flex items-center justify-between p-4 hover:bg-primary hover:text-on-primary transition-all duration-200" href="#">
+<span class="text-label-sm font-label-sm uppercase tracking-tight">Wire Mesh Container</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</a>
+</li>
+<li>
+<a class="group flex items-center justify-between p-4 hover:bg-primary hover:text-on-primary transition-all duration-200" href="#">
+<span class="text-label-sm font-label-sm uppercase tracking-tight">Industrial Plastic Pallet</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</a>
+</li>
+<li>
+<a class="group flex items-center justify-between p-4 hover:bg-primary hover:text-on-primary transition-all duration-200" href="#">
+<span class="text-label-sm font-label-sm uppercase tracking-tight">IBC Liquid Storage Tank</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</a>
+</li>
+<li>
+<a class="group flex items-center justify-between p-4 hover:bg-primary hover:text-on-primary transition-all duration-200" href="#">
+<span class="text-label-sm font-label-sm uppercase tracking-tight">Roll Cage Trolley</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</a>
+</li>
+<li>
+<a class="group flex items-center justify-between p-4 hover:bg-primary hover:text-on-primary transition-all duration-200" href="#">
+<span class="text-label-sm font-label-sm uppercase tracking-tight">Warehouse Shelving Rack</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</a>
+</li>
+<li>
+<a class="group flex items-center justify-between p-4 hover:bg-primary hover:text-on-primary transition-all duration-200" href="#">
+<span class="text-label-sm font-label-sm uppercase tracking-tight">Pallet Rack Wire Decking</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</a>
+</li>
+<li>
+<a class="group flex items-center justify-between p-4 hover:bg-primary hover:text-on-primary transition-all duration-200" href="#">
+<span class="text-label-sm font-label-sm uppercase tracking-tight">Plastic Storage Crate</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</a>
+</li>
+<li>
+<a class="group flex items-center justify-between p-4 hover:bg-primary hover:text-on-primary transition-all duration-200" href="#">
+<span class="text-label-sm font-label-sm uppercase tracking-tight">Metal Storage Pallet</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</a>
+</li>
+<li>
+<a class="group flex items-center justify-between p-4 hover:bg-primary hover:text-on-primary transition-all duration-200" href="#">
+<span class="text-label-sm font-label-sm uppercase tracking-tight">EPS Pallet</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+</a>
+</li>
+</ul>
+</div>
+<!-- Featured Visual Support -->
+</aside>
+<!-- Right Content Area -->
+<section class="flex-1">
+<button class="w-full mb-8 flex items-center justify-center gap-4 py-6 bg-on-tertiary-fixed hover:bg-on-tertiary-fixed-variant transition-all duration-300 group shadow-sm">
+<span class="material-symbols-outlined text-on-tertiary group-hover:scale-110 transition-transform">download</span>
+<span class="text-label-sm font-label-sm uppercase tracking-widest text-on-tertiary">Download Full Product Catalog</span>
+<span class="text-label-sm font-label-sm text-on-tertiary opacity-70 ml-2">(PDF, 12.4 MB)</span>
+</button><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Product Card 1 -->
+<div class="group bg-white border border-surface-variant hover:border-primary transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale" data-alt="A high-contrast professional photograph of a stack of heavy-duty industrial wire mesh containers in a clean, modern warehouse environment. The lighting is bright and architectural, highlighting the metallic textures and engineering precision of the collapsible storage solution. The scene is rendered in a minimalist light-mode aesthetic with sharp focus and deep shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaMNTVU9T8QjvfvZJgaB0-pHlPC_kJxBg1mHt4AKJ2J9FjsUooC0e6PANxsswFMUz_I_J_n7UNrpb2jFHoVFNffyd2SzBAyNfXk19972tcaTl0_vXtDiedFda3MagLZhRvnS82KYDN-6ZKCZQwaGoQWBQgajsBAheKw1cEvRsFOrK6CA5uW6jB57stpBZyR-EmKbNMajUDR-stsfmbbJzkoUVw3CPS_MG2i15SgOlIM8HrIYiSssVPVOoE699V0EwfLMEtCZpL0zh0"/>
+</div>
+<div class="p-6">
+<span class="text-[10px] font-label-sm uppercase tracking-widest text-on-tertiary-fixed-variant mb-2 block">Heavy Duty</span>
+<h3 class="text-headline-md font-headline-md uppercase mb-4">Industrial Wire Container</h3>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group bg-white border border-surface-variant hover:border-primary transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale" data-alt="A cinematic close-up of high-quality blue industrial plastic pallets stacked in a precise geometric arrangement. The lighting is high-key and professional, emphasizing the durable polymer material and clean structural lines against a bright, minimalist background. The visual style is premium and corporate, mirroring an automotive design aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-k1-NIZi-ZvKiL81XtCllYrlUGPpFp-1bZlj3l6e9b-Q77U2oTPhFpPsjChzyagN8Tv2Zpe9IroaaOyl4ROhFRs48-lWGS75812dLfGFSxSuntCruWcJtTxynMlCpKGIBLjKnRv9lhXXqstCjCf5rxPp4MwYJNJWchgGJlT2G6hCfDLZunEnyEOi_Vo0C9L9l80H16Fike8CmkeYOTBa8ogpycpZWRdORP1mCeDL4n2awnzItbMO8L_Ta7thMG2EdUBwWpz0w6Pqx"/>
+</div>
+<div class="p-6">
+<span class="text-[10px] font-label-sm uppercase tracking-widest text-on-tertiary-fixed-variant mb-2 block">Eco-Friendly</span>
+<h3 class="text-headline-md font-headline-md uppercase mb-4">Industrial Plastic Pallet</h3>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group bg-white border border-surface-variant hover:border-primary transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale" data-alt="An industrial IBC liquid storage tank showcased in a sterile, modern factory setting. The stainless steel frame and white plastic tank are illuminated by soft, diffused lighting that highlights the precision engineering and hygienic design. The mood is one of technological superiority and industrial efficiency, set within a monochrome luxury palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApvibjPKPpNVwrhId3_fJH3-XoWF5hvRpBatQzLg7dI-EcBcyglE7uX0Eggx_WY0XzQOg0FnMTNyKaMMjJ6WScS0MYFEw5SvJOWDv87LzjFkmbQbFMdiktfUmsEl6n46zHjd7KlRws-WLMu5pHgN7a6uboKvLlOFogASRIyEo8Ss5GFFatjl2cRWCHfKH4sRqXimHhE5oRX_mV92xjl4S7ppIJF2zUo1VizouV-gk16FegfysyJMRYgUWoPJbmoXyz_BjQeYMwkQGK"/>
+</div>
+<div class="p-6">
+<span class="text-[10px] font-label-sm uppercase tracking-widest text-on-tertiary-fixed-variant mb-2 block">Chemical Storage</span>
+<h3 class="text-headline-md font-headline-md uppercase mb-4">IBC Liquid Storage Tank</h3>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="group bg-white border border-surface-variant hover:border-primary transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale" data-alt="A series of heavy-duty warehouse shelving racks receding into a perfectly symmetrical perspective. The structural steel frames are captured with high-contrast lighting that emphasizes their strength and engineering. The atmosphere is quiet, expansive, and high-end, utilizing a grayscale color scheme with subtle blue accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKPgetKmFjOZSMsQPelHhM26Vxo6yfO4iSEMJqiCpHbnN5_I5HwRW-onqF-AQsdF1gz_cif11xzgB-L_50cX3UQ8Hi8eVCOXPtlZLoSFkuYjCJmNsg56qglH5nAUC3j53-vLM9iMTrIQPddcK6laS0Ua4XA3yUoAcjuBz63XWSB_X7X64BcLAnjdTORmDNY-fP7LyrlvqUHM6psmql_KobvC4BWOFHyyqjMiPn_71-aOsyxMsG6Y7DZoAFR2xUwDstd3Fv1u2vEbRP"/>
+</div>
+<div class="p-6">
+<span class="text-[10px] font-label-sm uppercase tracking-widest text-on-tertiary-fixed-variant mb-2 block">Logistics</span>
+<h3 class="text-headline-md font-headline-md uppercase mb-4">Warehouse Shelving Rack</h3>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="group bg-white border border-surface-variant hover:border-primary transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale" data-alt="A professional product shot of a silver metal roll cage trolley used for retail and logistics. The metal wire mesh is sharply defined against a clean white floor, with architectural shadows providing depth. The visual style is rooted in engineering excellence, focusing on the precision of the casters and frame." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrNj5s_gkHwYCo71X7gN_emAjZ84j-eQM2Jr4U7Ep50-4ne_xIheJyntPfzoij4eyHMyV7m7aoZcFmhIzxA6xAzAlijY7fwZFu_Jn2xmKhTGuxINSKkxFV2rzOjG0AosgOTQPQq8gkAi-gBvg3ZWbwD63Tbbxx48YJqFbaTk7Oedavob_Rsfnysds-U_foStn43WQJE_xohtdvAHGWBcp08zoaGAKaKK7dtQhjPF05sHBIhq6aLscgz056KlTJecp7PjSVj4hwfmJ1"/>
+</div>
+<div class="p-6">
+<span class="text-[10px] font-label-sm uppercase tracking-widest text-on-tertiary-fixed-variant mb-2 block">Transport</span>
+<h3 class="text-headline-md font-headline-md uppercase mb-4">Roll Cage Trolley</h3>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="group bg-white border border-surface-variant hover:border-primary transition-all duration-300">
+<div class="aspect-[4/3] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale" data-alt="A stack of industrial plastic crates arranged in a high-contrast pattern. The lighting highlights the reinforced structural ribs and the durable matte finish of the polymer. The image is framed as a luxury product exhibit, with ample negative space and a clean, minimalist light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7-CuTvobaLvlo1lwcymrfwltIyx_ze2jlZ-hX0F_o9R2DRN4ndPhkqZdlkx9PkkDp2KWyGTahLCKKlise4NqADWf8gEpEG2axN38tztJVf8uQABUBur55nr8s3silrQqX0g4NcCf6XerqZpojwF3hS4vl-tX4JMShofMPCVX8BHndlPGCwmm0cnIrKsHXEYVISkLhsTiwel9sI1qP36PFLQSDv-YGhNGfC1UDtFEWR8P2pvU4LMqFvShG82GqVgH4LHSMpqOc45fJ"/>
+</div>
+<div class="p-6">
+<span class="text-[10px] font-label-sm uppercase tracking-widest text-on-tertiary-fixed-variant mb-2 block">Organization</span>
+<h3 class="text-headline-md font-headline-md uppercase mb-4">Plastic Storage Crate</h3>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-16 flex justify-center items-center gap-4">
+<button class="material-symbols-outlined text-primary p-2 border border-surface-variant hover:bg-surface-container transition-all">chevron_left</button>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center bg-primary text-on-primary text-label-sm font-label-sm">1</button>
+<button class="w-10 h-10 flex items-center justify-center border border-surface-variant text-label-sm font-label-sm hover:bg-surface-container transition-all">2</button>
+<button class="w-10 h-10 flex items-center justify-center border border-surface-variant text-label-sm font-label-sm hover:bg-surface-container transition-all">3</button>
+</div>
+<button class="material-symbols-outlined text-primary p-2 border border-surface-variant hover:bg-surface-container transition-all">chevron_right</button>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-gap bg-primary border-t border-primary">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-container-max mx-auto text-on-primary">
+<div class="flex flex-col gap-6">
+<div class="text-headline-md font-headline-md font-bold">Wuhao Industry &amp; Trade</div>
+<p class="text-body-md text-secondary-fixed-dim">Leading global manufacturer of industrial storage and logistics solutions since 2004.</p>
+</div>
+<div class="flex flex-col gap-6">
+<span class="text-label-sm font-label-sm uppercase tracking-widest opacity-60">Products</span>
+<ul class="flex flex-col gap-4 text-body-md">
+<li><a class="text-secondary-fixed-dim hover:text-on-primary transition-all hover:underline" href="#">Wire Containers</a></li>
+<li><a class="text-secondary-fixed-dim hover:text-on-primary transition-all hover:underline" href="#">Plastic Pallets</a></li>
+<li><a class="text-secondary-fixed-dim hover:text-on-primary transition-all hover:underline" href="#">Storage Racking</a></li>
+<li><a class="text-secondary-fixed-dim hover:text-on-primary transition-all hover:underline" href="#">IBC Tanks</a></li>
+</ul>
+</div>
+<div class="flex flex-col gap-6">
+<span class="text-label-sm font-label-sm uppercase tracking-widest opacity-60">Company</span>
+<ul class="flex flex-col gap-4 text-body-md">
+<li><a class="text-secondary-fixed-dim hover:text-on-primary transition-all hover:underline" href="#">About Us</a></li>
+<li><a class="text-secondary-fixed-dim hover:text-on-primary transition-all hover:underline" href="#">Certifications</a></li>
+<li><a class="text-secondary-fixed-dim hover:text-on-primary transition-all hover:underline" href="#">News &amp; Events</a></li>
+<li><a class="text-secondary-fixed-dim hover:text-on-primary transition-all hover:underline" href="#">Global Distribution</a></li>
+</ul>
+</div>
+<div class="flex flex-col gap-6">
+<span class="text-label-sm font-label-sm uppercase tracking-widest opacity-60">Contact</span>
+<ul class="flex flex-col gap-4 text-body-md">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-on-tertiary-container">mail</span> info@wuhaoindustry.com</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-on-tertiary-container">call</span> +86 000 0000 0000</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-on-tertiary-container">location_on</span> Industrial Zone, China</li>
+</ul>
+</div>
+</div>
+<div class="mt-section-gap px-margin-desktop max-w-container-max mx-auto pt-8 border-t border-primary-container flex flex-col md:flex-row justify-between items-center gap-6">
+<span class="text-label-sm font-label-sm text-secondary-fixed-dim uppercase tracking-widest">© 2024 Wuhao Industry &amp; Trade. All Rights Reserved.</span>
+<div class="flex gap-8 text-label-sm font-label-sm uppercase tracking-widest">
+<a class="text-secondary-fixed-dim hover:text-on-primary" href="#">Privacy Policy</a>
+<a class="text-secondary-fixed-dim hover:text-on-primary" href="#">Terms of Service</a>
+<a class="text-secondary-fixed-dim hover:text-on-primary" href="#">Cookie Settings</a>
+</div>
+</div>
+</footer>
+</body></html>

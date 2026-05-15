@@ -7,13 +7,18 @@
 
 ## [Unreleased]
 
+## [0.0.4] - 2026-05-15
+
+### Fixed
+- 修复页面切换动画方向不一致的问题
+  - Home → Products 页面切换时，旧页面正确向左滑出，新页面从右侧滑入
+  - 使用 useEffect 延迟更新 prevIndexRef，确保 exit 和 enter 动画方向一致
+  - 使用 directionRef 保存方向值，避免渲染周期不同步问题
+
 ## [0.0.3] - 2026-05-15
 
 ### Fixed
-- 修复轮播图自动切换计时器问题
-  - 使用 setTimeout 替代 setInterval
-  - 点击切换后正确重置 6 秒倒计时
-  - 修复进度条走满后停止不动的问题
+- 修复进度条走满后停止不动的问题
 
 ## [0.0.2] - 2026-05-15
 
@@ -46,7 +51,8 @@
   - 配色：黑/白/蓝 (#1C69D3)
   - 字体：Hanken Grotesk + Inter
 
-[Unreleased]: https://github.com/ss897120156-bot/Wuhao_Ofiicial_Site/compare/v0.0.3...HEAD
+[Unreleased]: https://github.com/ss897120156-bot/Wuhao_Ofiicial_Site/compare/v0.0.4...HEAD
+[0.0.4]: https://github.com/ss897120156-bot/Wuhao_Ofiicial_Site/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/ss897120156-bot/Wuhao_Ofiicial_Site/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/ss897120156-bot/Wuhao_Ofiicial_Site/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/ss897120156-bot/Wuhao_Ofiicial_Site/releases/tag/v0.0.1

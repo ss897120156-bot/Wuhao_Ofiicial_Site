@@ -30,7 +30,7 @@ const slides = [
   },
 ];
 
-const SLIDE_DURATION = 6000;
+const SLIDE_DURATION = 4000;
 
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
