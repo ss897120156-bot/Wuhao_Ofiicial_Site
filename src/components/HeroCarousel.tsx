@@ -37,7 +37,7 @@ export default function HeroCarousel() {
   const [progress, setProgress] = useState(0);
   const startTimeRef = useRef<number>(Date.now());
   const animationRef = useRef<number>();
-  const isManualSwitchRef = useRef(false);
+  const timeoutRef = useRef<NodeJS.Timeout>();
 
   const resetProgress = useCallback(() => {
     startTimeRef.current = Date.now();
@@ -45,18 +45,19 @@ export default function HeroCarousel() {
   }, []);
 
   const nextSlide = useCallback(() => {
-    if (isManualSwitchRef.current) {
-      isManualSwitchRef.current = false;
-      return;
-    }
     setCurrent((prev) => (prev + 1) % slides.length);
     resetProgress();
   }, [resetProgress]);
 
+  // 使用 setTimeout 而不是 setInterval，每次切换后重新设置
   useEffect(() => {
-    const timer = setInterval(nextSlide, SLIDE_DURATION);
-    return () => clearInterval(timer);
-  }, [nextSlide]);
+    timeoutRef.current = setTimeout(nextSlide, SLIDE_DURATION);
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [current, nextSlide]);
 
   useEffect(() => {
     const updateProgress = () => {
@@ -76,9 +77,13 @@ export default function HeroCarousel() {
 
   const goToSlide = (index: number) => {
     if (index === current) return;
-    isManualSwitchRef.current = true;
+    // 清除当前的自动切换定时器
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
     setCurrent(index);
     resetProgress();
+    // 新的定时器会在 useEffect 中自动设置
   };
 
   return (
