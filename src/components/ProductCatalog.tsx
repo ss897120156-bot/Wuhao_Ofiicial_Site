@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 // 产品分类数据
 const categories = [
@@ -24,43 +25,88 @@ const products = [
     id: 1,
     name: "Industrial Wire Container",
     tag: "Heavy Duty",
+    categoryId: 1,
     image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
   },
   {
     id: 2,
-    name: "Industrial Plastic Pallet",
-    tag: "Eco-Friendly",
-    image: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80",
+    name: "Collapsible Wire Container Pro",
+    tag: "Space Saving",
+    categoryId: 2,
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
   },
   {
     id: 3,
-    name: "IBC Liquid Storage Tank",
-    tag: "Chemical Storage",
-    image: "https://images.unsplash.com/photo-1574263867128-a3d5c1b1decc?w=800&q=80",
+    name: "Wire Mesh Container XL",
+    tag: "Ventilated",
+    categoryId: 3,
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
   },
   {
     id: 4,
-    name: "Warehouse Shelving Rack",
-    tag: "Logistics",
-    image: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&q=80",
+    name: "Industrial Plastic Pallet",
+    tag: "Eco-Friendly",
+    categoryId: 4,
+    image: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80",
   },
   {
     id: 5,
-    name: "Roll Cage Trolley",
-    tag: "Transport",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+    name: "IBC Liquid Storage Tank",
+    tag: "Chemical Storage",
+    categoryId: 5,
+    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&q=80",
   },
   {
     id: 6,
+    name: "Roll Cage Trolley",
+    tag: "Transport",
+    categoryId: 6,
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+  },
+  {
+    id: 7,
+    name: "Warehouse Shelving Rack",
+    tag: "Logistics",
+    categoryId: 7,
+    image: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=800&q=80",
+  },
+  {
+    id: 8,
+    name: "Pallet Rack Wire Decking",
+    tag: "Reinforced",
+    categoryId: 8,
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
+  },
+  {
+    id: 9,
     name: "Plastic Storage Crate",
     tag: "Organization",
-    image: "https://images.unsplash.com/photo-1558618047-f4b511d0e435?w=800&q=80",
+    categoryId: 9,
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
+  },
+  {
+    id: 10,
+    name: "Metal Storage Pallet",
+    tag: "Heavy Load",
+    categoryId: 10,
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
+  },
+  {
+    id: 11,
+    name: "EPS Pallet Lightweight",
+    tag: "Insulated",
+    categoryId: 11,
+    image: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80",
   },
 ];
 
 export default function ProductCatalog() {
-  const [activeCategory, setActiveCategory] = useState(2);
+  const [activeCategory, setActiveCategory] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const filteredProducts = activeCategory === 0
+    ? products
+    : products.filter((p) => p.categoryId === activeCategory);
 
   return (
     <main className="pt-16 min-h-screen bg-[#f9f9f9]">
@@ -87,16 +133,63 @@ export default function ProductCatalog() {
 
               {/* Category List */}
               <ul className="divide-y divide-[#eeeeee]">
+                {/* All Products */}
+                <li>
+                  <button
+                    onClick={() => { setActiveCategory(0); setCurrentPage(1); }}
+                    className={`relative group w-full flex items-center justify-between p-4 transition-all duration-200 ${
+                      activeCategory === 0
+                        ? "bg-[#f4f3f3] text-[#000000]"
+                        : "hover:bg-[#000000] hover:text-white"
+                    }`}
+                  >
+                    {activeCategory === 0 && (
+                      <motion.div
+                        layoutId="activeCategoryIndicator"
+                        className="absolute left-0 top-0 bottom-0 w-1 bg-black"
+                        transition={{ type: "spring", stiffness: 500, damping: 45 }}
+                      />
+                    )}
+                    <span className="text-xs font-semibold uppercase tracking-tight">
+                      All Products
+                    </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className={`transition-opacity ${
+                        activeCategory === 0
+                          ? "opacity-100"
+                          : "opacity-0 group-hover:opacity-100"
+                      }`}
+                    >
+                      <path d="m9 18 6-6-6-6" />
+                    </svg>
+                  </button>
+                </li>
                 {categories.map((category) => (
                   <li key={category.id}>
                     <button
-                      onClick={() => setActiveCategory(category.id)}
-                      className={`group w-full flex items-center justify-between p-4 transition-all duration-200 ${
+                      onClick={() => { setActiveCategory(category.id); setCurrentPage(1); }}
+                      className={`relative group w-full flex items-center justify-between p-4 transition-all duration-200 ${
                         activeCategory === category.id
-                          ? "bg-[#f4f3f3] text-[#000000] border-l-4 border-[#000000]"
+                          ? "bg-[#f4f3f3] text-[#000000]"
                           : "hover:bg-[#000000] hover:text-white"
                       }`}
                     >
+                      {activeCategory === category.id && (
+                        <motion.div
+                          layoutId="activeCategoryIndicator"
+                          className="absolute left-0 top-0 bottom-0 w-1 bg-black"
+                          transition={{ type: "spring", stiffness: 500, damping: 45 }}
+                        />
+                      )}
                       <span className="text-xs font-semibold uppercase tracking-tight">
                         {category.name}
                       </span>
@@ -153,7 +246,7 @@ export default function ProductCatalog() {
 
             {/* Product Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-              {products.map((product) => (
+              {filteredProducts.map((product) => (
                 <div
                   key={product.id}
                   className="group bg-white border border-[#e2e2e2] hover:border-[#000000] transition-all duration-300"
@@ -163,7 +256,7 @@ export default function ProductCatalog() {
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
 
@@ -179,6 +272,13 @@ export default function ProductCatalog() {
                 </div>
               ))}
             </div>
+
+            {/* Empty State */}
+            {filteredProducts.length === 0 && (
+              <div className="text-center py-20">
+                <p className="text-sm text-[#848484]">No products found in this category.</p>
+              </div>
+            )}
 
             {/* Pagination */}
             <div className="mt-16 flex justify-center items-center gap-4">

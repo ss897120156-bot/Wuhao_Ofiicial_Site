@@ -36,8 +36,8 @@ export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
   const [progress, setProgress] = useState(0);
   const startTimeRef = useRef<number>(Date.now());
-  const animationRef = useRef<number>();
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const animationRef = useRef<number>(0);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const resetProgress = useCallback(() => {
     startTimeRef.current = Date.now();

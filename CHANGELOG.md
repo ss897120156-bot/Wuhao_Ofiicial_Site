@@ -7,6 +7,17 @@
 
 ## [Unreleased]
 
+## [0.0.5] - 2026-05-15
+
+### Fixed
+- 修复产品目录页面部分产品图片未正确显示的问题，替换为彩色实物图
+
+### Changed
+- 优化 Navbar 垂直居中对齐，移除硬编码 `pt-[7px]`，改用 flex 自然对齐
+- 在 Navbar 最右侧新增 **Request Quote** 询盘按钮，链接至联系页面
+- 产品目录左侧分类栏增加实际切换筛选功能，点击分类可过滤对应产品
+- 分类切换增加 `framer-motion` 动画效果，活跃指示条以弹簧动画平滑滑动
+
 ## [0.0.4] - 2026-05-15
 
 ### Added
@@ -50,7 +61,8 @@
   - 配色：黑/白/蓝 (#1C69D3)
   - 字体：Hanken Grotesk + Inter
 
-[Unreleased]: https://github.com/ss897120156-bot/Wuhao_Ofiicial_Site/compare/v0.0.4...HEAD
+[Unreleased]: https://github.com/ss897120156-bot/Wuhao_Ofiicial_Site/compare/v0.0.5...HEAD
+[0.0.5]: https://github.com/ss897120156-bot/Wuhao_Ofiicial_Site/compare/v0.0.4...v0.0.5
 [0.0.4]: https://github.com/ss897120156-bot/Wuhao_Ofiicial_Site/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/ss897120156-bot/Wuhao_Ofiicial_Site/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/ss897120156-bot/Wuhao_Ofiicial_Site/compare/v0.0.1...v0.0.2

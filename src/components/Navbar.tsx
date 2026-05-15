@@ -31,36 +31,38 @@ export default function Navbar() {
       <div className="max-w-[1440px] mx-auto px-6 lg:px-16">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2 pt-[7px]">
             <span className="font-display text-lg font-bold tracking-[0.05em] text-[#000000]">
               Wuhao Industry & Trade
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-8 pt-[7px]">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="relative text-xs font-semibold tracking-[0.1em] text-[#1a1c1c] hover:text-[#1c69d3] transition-colors duration-200 py-1 group"
+                  className="relative flex items-center h-full text-xs font-semibold tracking-[0.1em] text-[#1a1c1c] hover:text-[#1c69d3] transition-colors duration-200 group"
                 >
-                  {link.label}
-                  {/* Animated Underline */}
-                  <span
-                    className={`absolute bottom-0 left-0 h-[2px] bg-black transition-all duration-300 ease-out ${
-                      isActive ? "w-full" : "w-0 group-hover:w-full"
-                    }`}
-                  />
+                  <span className="relative flex items-center h-full">
+                    <span className="pb-[2px]">{link.label}</span>
+                    {/* Animated Underline */}
+                    <span
+                      className={`absolute bottom-0 left-0 h-[2px] bg-black transition-all duration-300 ease-out ${
+                        isActive ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
+                    />
+                  </span>
                 </Link>
               );
             })}
           </nav>
 
           {/* Right side: Language + Search */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 pt-[7px]">
             {/* Language Switcher */}
             <div className="relative">
               <button
@@ -102,6 +104,14 @@ export default function Navbar() {
                 <path d="m21 21-4.3-4.3"/>
               </svg>
             </button>
+
+            {/* Request Quote Button */}
+            <Link
+              href="/contact"
+              className="hidden lg:inline-flex items-center px-5 py-2 bg-[#000000] text-white text-[10px] font-semibold tracking-[0.15em] uppercase hover:bg-[#1c69d3] transition-colors duration-200"
+            >
+              Request Quote
+            </Link>
 
             {/* Mobile Menu Button */}
             <button
