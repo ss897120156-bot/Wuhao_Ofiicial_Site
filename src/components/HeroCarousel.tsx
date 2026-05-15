@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 
 const slides = [
@@ -30,20 +30,55 @@ const slides = [
   },
 ];
 
+const SLIDE_DURATION = 6000;
+
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const startTimeRef = useRef<number>(Date.now());
+  const animationRef = useRef<number>();
+  const isManualSwitchRef = useRef(false);
 
-  const nextSlide = useCallback(() => {
-    setCurrent((prev) => (prev + 1) % slides.length);
+  const resetProgress = useCallback(() => {
+    startTimeRef.current = Date.now();
+    setProgress(0);
   }, []);
 
+  const nextSlide = useCallback(() => {
+    if (isManualSwitchRef.current) {
+      isManualSwitchRef.current = false;
+      return;
+    }
+    setCurrent((prev) => (prev + 1) % slides.length);
+    resetProgress();
+  }, [resetProgress]);
+
   useEffect(() => {
-    const timer = setInterval(nextSlide, 6000);
+    const timer = setInterval(nextSlide, SLIDE_DURATION);
     return () => clearInterval(timer);
   }, [nextSlide]);
 
+  useEffect(() => {
+    const updateProgress = () => {
+      const elapsed = Date.now() - startTimeRef.current;
+      const newProgress = Math.min((elapsed / SLIDE_DURATION) * 100, 100);
+      setProgress(newProgress);
+      animationRef.current = requestAnimationFrame(updateProgress);
+    };
+
+    animationRef.current = requestAnimationFrame(updateProgress);
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [current]);
+
   const goToSlide = (index: number) => {
+    if (index === current) return;
+    isManualSwitchRef.current = true;
     setCurrent(index);
+    resetProgress();
   };
 
   return (
@@ -96,17 +131,28 @@ export default function HeroCarousel() {
         </div>
       ))}
 
-      {/* Slide Indicators */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex gap-3">
+      {/* Slide Indicators with Progress */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex gap-4">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-12 h-[2px] transition-all duration-300 ${
-              index === current ? "bg-white" : "bg-white/40"
-            }`}
+            className="group relative h-[6px] transition-all duration-200 hover:scale-y-200 active:scale-y-150 active:scale-x-95"
+            style={{ width: "96px" }}
             aria-label={`Go to slide ${index + 1}`}
-          />
+          >
+            {/* Background track */}
+            <span className="absolute inset-0 bg-white/30" />
+            {/* Progress fill */}
+            <span
+              className="absolute inset-y-0 left-0 bg-white"
+              style={{
+                width: index === current ? `${progress}%` : "0%",
+              }}
+            />
+            {/* Hover highlight */}
+            <span className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-200" />
+          </button>
         ))}
       </div>
     </section>

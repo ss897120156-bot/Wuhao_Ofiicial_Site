@@ -2,28 +2,14 @@
 
 import Link from "next/link";
 
-const quickLinks = [
-  { label: "Product Catalog", href: "/products" },
-  { label: "Trade Solutions", href: "/solutions" },
-  { label: "Quality Control", href: "/quality" },
-  { label: "Global Logistics", href: "/logistics" },
-];
-
-const supportLinks = [
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms of Service", href: "/terms" },
-  { label: "Cookie Settings", href: "/cookies" },
-  { label: "Global Locations", href: "/locations" },
-];
-
 export default function Footer() {
   return (
     <footer className="bg-[#1a1c1c] text-white">
       {/* Main Footer */}
       <div className="max-w-[1440px] mx-auto px-6 lg:px-16 py-16 lg:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-12">
           {/* Brand Column */}
-          <div className="lg:col-span-4">
+          <div>
             <h3 className="font-display text-xl font-bold tracking-[0.05em] mb-4">
               Wuhao
             </h3>
@@ -58,78 +44,7 @@ export default function Footer() {
               </a>
             </div>
           </div>
-
-          {/* Quick Links */}
-          <div className="lg:col-span-2">
-            <h4 className="font-body text-xs font-semibold tracking-[0.1em] text-white/40 mb-6">
-              QUICK LINKS
-            </h4>
-            <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="font-body text-sm text-white/60 hover:text-white transition-colors duration-200"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Support */}
-          <div className="lg:col-span-2">
-            <h4 className="font-body text-xs font-semibold tracking-[0.1em] text-white/40 mb-6">
-              SUPPORT
-            </h4>
-            <ul className="space-y-3">
-              {supportLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="font-body text-sm text-white/60 hover:text-white transition-colors duration-200"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div className="lg:col-span-4">
-            <h4 className="font-body text-xs font-semibold tracking-[0.1em] text-white/40 mb-6">
-              NEWSLETTER
-            </h4>
-            <p className="font-body text-sm text-white/60 mb-4">
-              Stay updated with the latest in global industrial manufacturing.
-            </p>
-            <form className="flex" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                placeholder="Business Email"
-                className="flex-1 px-4 py-3 bg-white/10 border border-white/20 text-white text-sm placeholder:text-white/40 focus:outline-none focus:border-[#1c69d3] transition-colors"
-              />
-              <button
-                type="submit"
-                className="px-6 py-3 bg-white text-black text-xs font-semibold tracking-[0.1em] hover:bg-[#1c69d3] hover:text-white transition-all duration-200"
-              >
-                SUBMIT
-              </button>
-            </form>
-          </div>
         </div>
-      </div>
-
-      {/* Factory Image Strip */}
-      <div className="relative w-full h-[200px] lg:h-[300px]">
-        <img
-          src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=80"
-          alt="Wuhao Factory"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/50" />
       </div>
 
       {/* Bottom Bar */}

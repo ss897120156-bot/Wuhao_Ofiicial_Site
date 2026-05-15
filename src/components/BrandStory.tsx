@@ -52,7 +52,7 @@ export default function BrandStory() {
           {/* Right: Image */}
           <div className="relative aspect-[4/3] lg:aspect-auto lg:h-[600px]">
             <img
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80"
+              src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=800&q=80"
               alt="Wuhao Factory"
               className="absolute inset-0 w-full h-full object-cover"
             />
