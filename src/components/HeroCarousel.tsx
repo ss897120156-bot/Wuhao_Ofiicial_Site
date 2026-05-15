@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
 import Link from "next/link";
 
 const slides = [
@@ -58,12 +57,10 @@ export default function HeroCarousel() {
         >
           {/* Background Image */}
           <div className="absolute inset-0">
-            <Image
+            <img
               src={slide.image}
               alt={slide.title.replace(/\n/g, " ")}
-              fill
-              className="object-cover"
-              priority={index === 0}
+              className="absolute inset-0 w-full h-full object-cover"
             />
             {/* Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
