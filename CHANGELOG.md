@@ -7,6 +7,12 @@
 
 ## [Unreleased]
 
+## [0.0.6] - 2026-05-15
+
+### Changed
+- 产品目录分页改为动态页数：每页最多 9 个产品，页码根据实际产品数量动态计算
+- 产品目录页面标题从 "All Products" 改为 "PRODUCTS"
+
 ## [0.0.5] - 2026-05-15
 
 ### Fixed
@@ -61,7 +67,8 @@
   - 配色：黑/白/蓝 (#1C69D3)
   - 字体：Hanken Grotesk + Inter
 
-[Unreleased]: https://github.com/ss897120156-bot/Wuhao_Ofiicial_Site/compare/v0.0.5...HEAD
+[Unreleased]: https://github.com/ss897120156-bot/Wuhao_Ofiicial_Site/compare/v0.0.6...HEAD
+[0.0.6]: https://github.com/ss897120156-bot/Wuhao_Ofiicial_Site/compare/v0.0.5...v0.0.6
 [0.0.5]: https://github.com/ss897120156-bot/Wuhao_Ofiicial_Site/compare/v0.0.4...v0.0.5
 [0.0.4]: https://github.com/ss897120156-bot/Wuhao_Ofiicial_Site/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/ss897120156-bot/Wuhao_Ofiicial_Site/compare/v0.0.2...v0.0.3

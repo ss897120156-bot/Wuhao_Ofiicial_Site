@@ -100,6 +100,8 @@ const products = [
   },
 ];
 
+const PRODUCTS_PER_PAGE = 9;
+
 export default function ProductCatalog() {
   const [activeCategory, setActiveCategory] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -108,6 +110,11 @@ export default function ProductCatalog() {
     ? products
     : products.filter((p) => p.categoryId === activeCategory);
 
+  const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE);
+  const startIndex = (currentPage - 1) * PRODUCTS_PER_PAGE;
+  const endIndex = startIndex + PRODUCTS_PER_PAGE;
+  const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
+
   return (
     <main className="pt-16 min-h-screen bg-[#f9f9f9]">
       {/* Main Content */}
@@ -115,7 +122,7 @@ export default function ProductCatalog() {
         {/* Title Section */}
         <div className="mb-12">
           <h1 className="font-display text-4xl lg:text-5xl font-bold tracking-[0.05em] text-[#000000] uppercase">
-            All Products
+            PRODUCTS
           </h1>
           <div className="h-1 w-24 bg-[#1c69d3] mt-4"></div>
         </div>
@@ -246,7 +253,7 @@ export default function ProductCatalog() {
 
             {/* Product Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-              {filteredProducts.map((product) => (
+              {paginatedProducts.map((product) => (
                 <div
                   key={product.id}
                   className="group bg-white border border-[#e2e2e2] hover:border-[#000000] transition-all duration-300"
@@ -281,57 +288,67 @@ export default function ProductCatalog() {
             )}
 
             {/* Pagination */}
-            <div className="mt-16 flex justify-center items-center gap-4">
-              <button className="p-2 border border-[#e2e2e2] hover:bg-[#eeeeee] transition-all">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-[#000000]"
+            {totalPages > 1 && (
+              <div className="mt-16 flex justify-center items-center gap-4">
+                <button
+                  onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                  disabled={currentPage === 1}
+                  className="p-2 border border-[#e2e2e2] hover:bg-[#eeeeee] transition-all disabled:opacity-30 disabled:cursor-not-allowed"
                 >
-                  <path d="m15 18-6-6 6-6" />
-                </svg>
-              </button>
-
-              <div className="flex gap-2">
-                {[1, 2, 3].map((page) => (
-                  <button
-                    key={page}
-                    onClick={() => setCurrentPage(page)}
-                    className={`w-10 h-10 flex items-center justify-center text-xs font-semibold transition-all ${
-                      currentPage === page
-                        ? "bg-[#000000] text-white"
-                        : "border border-[#e2e2e2] hover:bg-[#eeeeee]"
-                    }`}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-[#000000]"
                   >
-                    {page}
-                  </button>
-                ))}
-              </div>
+                    <path d="m15 18-6-6 6-6" />
+                  </svg>
+                </button>
 
-              <button className="p-2 border border-[#e2e2e2] hover:bg-[#eeeeee] transition-all">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-[#000000]"
+                <div className="flex gap-2">
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                    <button
+                      key={page}
+                      onClick={() => setCurrentPage(page)}
+                      className={`w-10 h-10 flex items-center justify-center text-xs font-semibold transition-all ${
+                        currentPage === page
+                          ? "bg-[#000000] text-white"
+                          : "border border-[#e2e2e2] hover:bg-[#eeeeee]"
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={currentPage === totalPages}
+                  className="p-2 border border-[#e2e2e2] hover:bg-[#eeeeee] transition-all disabled:opacity-30 disabled:cursor-not-allowed"
                 >
-                  <path d="m9 18 6-6-6-6" />
-                </svg>
-              </button>
-            </div>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-[#000000]"
+                  >
+                    <path d="m9 18 6-6-6-6" />
+                  </svg>
+                </button>
+              </div>
+            )}
           </section>
         </div>
       </div>
