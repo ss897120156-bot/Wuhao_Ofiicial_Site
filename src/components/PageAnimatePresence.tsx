@@ -18,7 +18,7 @@ function FrozenRouter(props: { children: React.ReactNode }) {
 }
 
 // 定义页面顺序，用于判断滑动方向
-const pageOrder = ["/", "/products", "/news", "/about", "/certifications", "/contact"];
+const pageOrder = ["/", "/products", "/news", "/about", "/factory", "/certifications", "/contact"];
 
 export default function PageAnimatePresence({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
